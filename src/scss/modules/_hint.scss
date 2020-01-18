@@ -1,0 +1,26 @@
+/**
+ * .hint is a small box meant for displaying small helpful messages.
+ * requires a parent with positioning, as its absolutely positioned.
+ * by ole fjarestad.
+ */
+.hint {
+	$arrowSize: 1rem;
+	color: map-get( $colors, white );
+	background-color: map-get( $colors, primary );
+	padding: map-get( $layout, gutter );
+	max-width: calc( 100% - (#{map-get($layout, gutter)} * 2) );
+	border-radius: map-get( $form, borderRadius );
+	position: absolute;
+	bottom: calc( 100% + (#{$arrowSize} * 1.5) );
+	left: map-get( $layout, gutter );
+	animation: float 1s ease-in-out alternate infinite;
+	&:after {
+		content: '';
+		position: absolute;
+		top: 100%;
+		left: map-get( $layout, gutter );
+		border-style: solid;
+		border-width: $arrowSize $arrowSize 0 0;
+		border-color: map-get( $colors, primary ) transparent transparent transparent;
+	}
+}

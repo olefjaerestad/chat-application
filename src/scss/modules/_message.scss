@@ -1,0 +1,79 @@
+/**
+ * .message is a container for a message posted by a user.
+ * by ole fjarestad.
+ */
+.message {
+	$messageMaxWidth: 960px;
+	$toggleEditSize: 2rem;
+	position: relative;
+	&:hover {
+		background-color: map-get( $colors, lightGray );
+	}
+	&--editable {
+		.message__meta {
+			padding-right: $toggleEditSize + map-get($layout, gutter); // [ole] make room for absolutely positioned edit button.
+		}
+	}
+	&__meta {
+		&__username {
+			font-weight: map-get( $fontWeights, bold );
+			word-break: break-word;
+		}
+		&__time {
+			font-weight: map-get( $fontWeights, semibold );
+			opacity: .5;
+		}
+	}
+	&__text {
+		word-break: break-word;
+		max-width: $messageMaxWidth;
+		margin: 0;
+		&--faded {
+			font-weight: map-get( $fontWeights, semibold );
+			opacity: .5;
+		}
+	}
+	&__edit {
+		position: absolute;
+		top: map-get( $layout, gutter ) / 2;
+		right: map-get( $layout, gutter );
+		&__toggle {
+			width: $toggleEditSize;
+			height: $toggleEditSize;
+			color: map-get( $colors, darkGray );
+			background-color: transparent;
+			padding: 0;
+			border: none;
+			border-radius: 50%;
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			transition: $transition;
+			&:hover, &:focus {
+				color: map-get( $colors, white );
+				background-color: map-get( $colors, primary );
+				border-color: map-get( $colors, primary );
+			}
+		}
+		&__actions {
+			background-color: map-get( $colors, white );
+			border: 1px solid map-get( $colors, lightGray );
+			position: absolute;
+			bottom: 100%;
+			right: 0;
+			&:not(.isActive) {
+				display: none;
+			}
+			a, button {
+				padding-top: map-get($layout, gutter) / 2 !important;
+				padding-bottom: map-get($layout, gutter) / 2 !important;
+			}
+		}
+	}
+	&__editor {
+		max-width: $messageMaxWidth;
+		[type="text"] {
+			width: 100%;
+		}
+	}
+}

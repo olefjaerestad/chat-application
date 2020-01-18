@@ -1,0 +1,50 @@
+[type="text"],
+[type="submit"],
+[type="reset"] {
+	font-size: 1rem;
+	height: map-get( $form, inputHeight );
+	padding: 0 map-get( $form, inputPadding );
+	border-radius: map-get( $form, borderRadius );
+	outline: none;
+	margin: 0;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+[type="text"] {
+	border: 1px solid map-get( $colors, darkGray );
+}
+[type="submit"] {
+	color: map-get( $colors, white );
+	background-color: map-get( $colors, primary );
+	border: 1px solid map-get( $colors, primary );
+}
+[type="reset"] {
+	color: map-get( $colors, black );
+	background-color: map-get( $colors, white );
+	border: 1px solid map-get( $colors, black );
+}
+[type="submit"],
+[type="reset"] {
+	cursor: pointer;
+	&:hover, &:focus {
+		text-decoration: underline;
+	}
+}
+label {
+	cursor: pointer;
+}
+
+// [ole] placeholder styling. these must be in separate rules, or else the different browsers won't understand them.
+::-webkit-input-placeholder { // webkit
+	color: map-get( $colors, darkGray );
+}
+:-moz-placeholder { // firefox < 18
+	color: map-get( $colors, darkGray );
+}
+::-moz-placeholder {  // firefox > 19
+	color: map-get( $colors, darkGray );
+}
+:-ms-input-placeholder { // ie
+	color: map-get( $colors, darkGray );
+}

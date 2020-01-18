@@ -1,0 +1,60 @@
+/**
+ * .tabs are meant to control the visibility of other sections.
+ * by ole fjarestad.
+ */
+.tabs {
+	text-align: center;
+	display: flex;
+	.tabs__tab {
+		font-weight: map-get( $fontWeights, semibold );
+		background-color: transparent;
+		padding: map-get( $layout, gutter );
+		border: none;
+		flex: 1;
+		&:hover, &:focus {
+			text-decoration: underline;
+		}
+		@media (min-width: map-get($breakpoints, medium)) {
+			text-align: left;
+			pointer-events: none; // [ole] tabs are inactive on larger screen widths.
+		}
+		&:not(:last-child) { // [ole] ensure rounded corners where there should be
+			border-top-right-radius: map-get( $form, borderRadius );
+		}
+		&:not(:first-child) { // [ole] ensure rounded corners where there should be
+			border-top-left-radius: map-get( $form, borderRadius );
+		}
+		&:not(.isActive) { // [ole] the active one kinda merges/blends with the section below
+			border-bottom: 1px solid map-get( $colors, gray );
+		}
+		&.isActive {
+			text-decoration: none;
+			background-color: map-get( $colors, white );
+			border-top: 1px solid map-get( $colors, gray );
+			border-bottom: 1px solid map-get( $colors, white );
+			&:not(:last-child) { // [ole] ensure borders where there should be
+				border-right: 1px solid map-get( $colors, gray );
+			}
+			&:not(:first-child) { // [ole] ensure borders where there should be
+				border-left: 1px solid map-get( $colors, gray );
+			}
+		}
+		&--users {
+			@media (min-width: map-get($breakpoints, medium)) {
+				color: map-get( $colors, white );
+				background-color: map-get( $colors, primary ) !important;
+				max-width: 250px;
+				border-right: none !important;
+				border-bottom: none !important;
+			}
+		}
+		&--chat {
+			@media (min-width: map-get($breakpoints, medium)) {
+				background-color: map-get( $colors, white ) !important;
+				border-top: none !important;
+				border-bottom: 1px solid map-get( $colors, lightGray ) !important;
+				border-left: none !important;
+			}
+		}
+	}
+}

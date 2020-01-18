@@ -1,0 +1,7 @@
+body {
+	font-family: 'Avenir', Helvetica, Arial, sans-serif;
+	color: map-get( $colors, black );
+	background-color: map-get( $colors, white );
+	min-height: calc(8rem + 200px); // [ole] 8rem = combined height of .app__upper and .app__middle. 200px = the minimum height we want for .app__lower. this makes the app work a little better on small screen heights.
+	margin: 0;
+}

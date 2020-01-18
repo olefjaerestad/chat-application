@@ -1,0 +1,36 @@
+{
+  "name": "chat-application",
+  "version": "1.0.0",
+  "description": "A WebSockets application",
+  "main": "index.js",
+  "scripts": {
+    "startserver": "nodemon server.js",
+    "startui": "webpack-dev-server --host 0.0.0.0 --open --ip=$IP",
+    "startuilocalip": "IP=192.168.1.242 npm run startui",
+    "build": "webpack --mode=production --ip=$IP"
+  },
+  "keywords": [
+    "websockets",
+    "typescript",
+    "chat"
+  ],
+  "author": "Ole Kristian Fjaerestad",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^7.1.2"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.19.3",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "ts-loader": "^6.2.0",
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.1",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2"
+  }
+}

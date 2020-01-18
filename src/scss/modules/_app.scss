@@ -1,0 +1,136 @@
+/**
+ * .app wraps everything.
+ * by ole fjarestad.
+ */
+.app {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	&__upper {
+		font-size: 1rem;
+		text-align: center;
+		padding: map-get( $layout, gutter );
+		margin: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	&__upper,
+	&__middle {
+		background-color: map-get( $colors, lightGray );
+		height: 4rem;
+	}
+	&__lower {
+		max-height: calc(100% - 8rem); // [ole] 8rem = combined height of .app__upper and .app__middle.
+		flex: 1;
+		display: flex;
+		transform: translate3d(-100%, 0, 0); // [ole] start at chat area
+		transition: $transition;
+		@media (min-width: map-get($breakpoints, medium)) {
+			transform: translate3d(0, 0, 0) !important; // [ole] all areas are visible in viewport, so no need to move. !important in order to overwrite inline styles added by tabs.ts
+		}
+		&__area { // [ole] participants and chat areas.
+			min-width: 100%; // [ole] force it to fill parent width, despite flex
+			max-width: 100%;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			@media (min-width: map-get($breakpoints, medium)) {
+				min-width: 0;
+			}
+			&--users {
+				@media (min-width: map-get($breakpoints, medium)) {
+					color: map-get( $colors, white );
+					background-color: map-get( $colors, primary );
+					max-width: 250px;
+				}
+			}
+			.list {
+				flex: 1;
+				overflow-y: scroll;
+				-webkit-overflow-scrolling: touch; // [ole] inertia scroll. requires overflow/overflow-x/overflow-y: scroll
+				@media (min-width: map-get($breakpoints, medium)) {
+					overflow-y: auto;
+				}
+			}
+			.messages {
+				display: flex;
+				flex-direction: column;
+				> :first-child { // [ole] make sure messages start at bottom. requires flex and flex-direction: column on the parent. can't use justfy-content: flex-end on parent, as it disables scrolling.
+					margin-top: auto;
+				}
+			}
+		}
+	}
+	&__form {
+		padding-right: map-get( $layout, gutter );
+		padding-bottom: map-get( $layout, gutter );
+		padding-left: map-get( $layout, gutter );
+		display: flex;
+		align-items: center;
+		position: relative;
+		.meta {
+			display: inline-flex;
+			align-items: center;
+			&__icon {
+				width: 2em;
+				height: 2em;
+				padding: .3rem;
+				border-radius: 50%;
+				margin-right: .5rem;
+				&:hover, &:focus {
+					background-color: map-get( $colors, primary );
+					g {
+						stroke: map-get( $colors, white );
+					}
+				}
+			}
+			&__filename {
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				max-width: 8em;
+				padding: 0;
+				border: 0;
+				display: inline-block;
+				position: relative;
+				overflow: hidden;
+				&:after {
+					content: '\d7'; // basically &times;
+					color: map-get( $colors, white );
+					background-color: map-get( $colors, error );
+					width: 1.3em;
+					height: 1.3em;
+					border-radius: 50%;
+					position: absolute;
+					top: 0;
+					right: 1px;
+					opacity: 0;
+					transition: $transition;
+				}
+				&:hover, &:focus {
+					text-decoration: underline;
+					&:after {
+						opacity: 1;
+					}
+				}
+			}
+		}
+		[type="text"] {
+			min-width: 0;
+			flex: 1;
+			@media (min-width: map-get($breakpoints, medium)) {
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+			}
+		}
+		[type="submit"] {
+			width: 8rem;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+			display: none;
+			@media (min-width: map-get($breakpoints, medium)) {
+				display: block;
+			}
+		}
+	}
+}

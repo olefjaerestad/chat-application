@@ -1,0 +1,41 @@
+/**
+ * modifier classes for lists.
+ * by ole fjarestad.
+ */
+ul,
+ol {
+	&.fancylist {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		> li {
+			padding: map-get( $layout, gutter );
+		}
+	}
+	&.linklist {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		> li {
+			> a, button {
+				text-decoration: none;
+				text-align: left;
+				color: map-get( $colors, black );
+				width: 100%;
+				padding: map-get( $layout, gutter );
+				border: none; // [ole] reset borders
+				border-bottom: 1px solid map-get( $colors, lightGray );
+				display: block;
+				&:hover, &:focus {
+					color: map-get( $colors, white );
+					background-color: map-get( $colors, primary );
+				}
+			}
+		}
+	}
+	&.bordered {
+		> li {
+			border-bottom: 1px solid map-get( $colors, gray );
+		}
+	}
+}

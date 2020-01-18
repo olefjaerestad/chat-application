@@ -1,0 +1,18 @@
+/**
+ * .symbol is a circular icon meant for containing one character.
+ * by ole fjarestad.
+ */
+.symbol {
+	font-size: 1.6rem;
+	color: map-get( $colors, white );
+	background-color: map-get( $colors, primary );
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	&--error {
+		background-color: map-get( $colors, error );
+	}
+}

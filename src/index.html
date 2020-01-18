@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chat - A WebSockets application</title>
+</head>
+
+<body class="app" id="js--app">
+
+	<h1 class="app__upper">Our super important conversation</h1>
+
+	<div class="app__middle tabs">
+		<button class="tabs__tab tabs__tab--users js--tab" data-area="0">Participants <span id="js--userCounter"></span></button>
+		<button class="tabs__tab tabs__tab--chat isActive js--tab" data-area="1">Chat</button>
+	</div>
+
+	<div class="app__lower" id="js--content">
+
+		<div class="app__lower__area app__lower__area--users">
+			<ul class="list fancylist bordered" id="js--users"></ul>
+		</div>
+
+		<div class="app__lower__area app__lower__area--chat" id="js--chat">
+			<ul class="list messages fancylist" id="js--messages"></ul>
+
+			<div id="js--form">
+				<form action="" class="app__form" id="js--loginForm">
+					<span class="hint">Hey! Enter a nickname to join the conversation :)</span>
+					<label for="username" class="showForSr">Username</label>
+					<input type="text" name="username" placeholder="Enter your nickname" autocomplete="off" autofocus id="username" />
+					<input type="submit" value="Join chat">
+				</form>
+			</div>
+			
+		</div>
+
+	</div>
+
+</body>
+</html>

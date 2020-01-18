@@ -1,0 +1,9 @@
+html {
+	font-size: 100%;
+	-webkit-text-size-adjust: 100%; // [ole] prevent ios font scaling (i.e. larger text in landscape mode).
+	overflow-x: hidden;
+	box-sizing: border-box;
+	* {
+		box-sizing: inherit;
+	}
+}

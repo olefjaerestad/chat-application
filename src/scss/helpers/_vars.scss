@@ -1,0 +1,30 @@
+$fontWeights: (
+	semibold: 500,
+	bold: 700,
+);
+
+$colors: (
+	white: #fff,
+	lightGray: #ebebeb,
+	gray: #E1E3E5,
+	darkGray: #868D98,
+	black: #354052,
+	primary: #3d90f1,
+	error: #f1493d,
+);
+
+$form: (
+	inputHeight: 3rem,
+	inputPadding: 1rem,
+	borderRadius: 5px,
+);
+
+$layout: (
+	gutter: 1rem,
+);
+
+$transition: all .25s cubic-bezier(.32, .03, .03, 1.03);
+
+$breakpoints: (
+	medium: 768px,
+);
